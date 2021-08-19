@@ -34,6 +34,7 @@ let currentSong = false
 let songBPM = 1000/(speed.bpm/60)
 
 let diff = {
+  trackpad:songBPM*8,
   easy:songBPM*4,
   med:songBPM*2,
   hard:songBPM*1
@@ -69,6 +70,7 @@ function rollingStar() {
   speed.bpm = 81*2
   songBPM = 1000/(speed.bpm/60)
   diff = {
+    trackpad:songBPM*8,
     easy:songBPM*4,
     med:songBPM*2,
     hard:songBPM*1
@@ -85,6 +87,7 @@ function neverGonnaGiveYouUp() {
   speed.bpm = 113
   songBPM = 1000/(speed.bpm/60)
   diff = {
+    trackpad:songBPM*8,
     easy:songBPM*4,
     med:songBPM*2,
     hard:songBPM*1
@@ -100,6 +103,7 @@ function kamadoTanjironoUta() {
   speed.bpm = 76
   songBPM = 1000/(speed.bpm/60)
   diff = {
+    trackpad:songBPM*8,
     easy:songBPM*4,
     med:songBPM*2,
     hard:songBPM*1
@@ -114,6 +118,7 @@ function shapeOfYou() {
   speed.bpm = 96
   songBPM = 1000/(speed.bpm/60)
   diff = {
+    trackpad:songBPM*8,
     easy:songBPM*4,
     med:songBPM*2,
     hard:songBPM*1
@@ -130,6 +135,7 @@ function unravel() {
   speed.bpm = 135
   songBPM = 1000/(speed.bpm/60)
   diff = {
+    trackpad:songBPM*8,
     easy:songBPM*4,
     med:songBPM*2,
     hard:songBPM*1
@@ -511,6 +517,12 @@ function med() {
 function hard() {
   myStop()
   mode = "hard"
+  
+
+}
+function trackPadUsers() {
+  myStop()
+  mode = "trackpad"
   
 
 }
