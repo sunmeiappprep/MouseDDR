@@ -142,7 +142,7 @@ function pointerCheck() {
   
   var rect1 = {x: pointerX, y: pointerY, width: radius, height: radius}  
   for (let x = 0; x < circle.circles.length;x++){
-    var rect2 = {x: circle.circles[x][0]+(window.innerWidth-canvas.width)/2, y: circle.circles[x][1], width: radius, height: radius}
+    var rect2 = {x: circle.circles[x][0]+(window.innerWidth-canvas.width)/2, y: circle.circles[x][1]+60, width: radius, height: radius}
     if (rect1.x < rect2.x + rect2.width &&
       rect1.x + rect1.width > rect2.x &&
       rect1.y < rect2.y + rect2.height &&
