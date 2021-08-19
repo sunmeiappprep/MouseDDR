@@ -504,6 +504,31 @@ function hard() {
   
 
 }
+let oldVol = undefined
+
+function toggleMute() {
+  if (circle.audio.volume > 0){
+    oldVol = circle.audio.volume
+    circle.audio.volume = 0
+  }
+  else{
+    circle.audio.volume = oldVol
+  } 
+
+}
+
+function volDown() {
+  if (circle.audio.volume > .001){
+    circle.audio.volume -= .20
+}
+}
+
+function volUp() {
+  if (circle.audio.volume < 1){
+    circle.audio.volume += .20
+}
+}
+
 
 function drawInstruction(){
 
