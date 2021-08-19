@@ -15,11 +15,12 @@ Choosing difficulty
 Choosing song
 
 Disclaimer
-This project is only for educational purpose only(Non-commercial)`;
-Shape of You by Ed Sheeran: https://www.youtube.com/watch?v=VJ2rlci9PE0`;
-Kamado Tanjirou no Uta by Nami: https://www.youtube.com/watch?v=Y7YwcHbvysM`;
-Rolling Star by Yui: https://www.youtube.com/watch?v=WiowHc4uc0A`;
-Unravel by TK: https://www.youtube.com/watch?v=H2oWviWV9r4`;
+This project is only for educational purpose only(Non-commercial);
+Shape of You by Ed Sheeran: https://www.youtube.com/watch?v=VJ2rlci9PE0;
+Kamado Tanjirou no Uta by Nami: https://www.youtube.com/watch?v=Y7YwcHbvysM;
+Rolling Star by Yui: https://www.youtube.com/watch?v=WiowHc4uc0A;
+Unravel by TK: https://www.youtube.com/watch?v=H2oWviWV9r4;
+Never Gonna Give You Up  by Rick Astley : https://www.youtube.com/watch?v=dQw4w9WgXcQ;
 
 
 <img src="wireframe.png" style="height: 500px; width:1024px;"><br>

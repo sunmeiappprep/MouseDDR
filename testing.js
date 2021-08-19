@@ -25,10 +25,10 @@ document.body.prepend(canvas1);
 
 
 let speed = {
-  bpm:76
+  bpm:113
 }
 
-let mode = "easy"
+let mode = "med"
 
 let songBPM = 1000/(speed.bpm/60)
 
@@ -37,7 +37,7 @@ let diff = {
   med:songBPM*2,
   hard:songBPM*1
 }
-
+let endScore = 0;
 
 const min = -25;
 const max = 25;
@@ -57,7 +57,7 @@ const circle = {
   // audio:new Audio('Temp79.mp3'),
   unravelSong:new Audio('Unravel.mp3'),
   // audio:new Audio('120 2.mp3'),
-  audio:new Audio('76.mp3'),
+  audio:new Audio('113.mp3'),
   rollingStarSong:new Audio('81.mp3'),
   // audio:new Audio('Naruto 97.mp3'),
   boolStarted: false
@@ -66,6 +66,21 @@ function rollingStar() {
   myStop()
   circle.audio = new Audio('81.mp3')
   speed.bpm = 81*2
+  songBPM = 1000/(speed.bpm/60)
+  diff = {
+    easy:songBPM*4,
+    med:songBPM*2,
+    hard:songBPM*1
+  }
+
+  
+}
+
+
+function neverGonnaGiveYouUp() {
+  myStop()
+  circle.audio = new Audio('113.mp3')
+  speed.bpm = 113
   songBPM = 1000/(speed.bpm/60)
   diff = {
     easy:songBPM*4,
@@ -139,7 +154,7 @@ function pointerCheck() {
   ctx.clearRect(pointerX - radius - 1- ((window.innerWidth-canvas.width)/2), pointerY - radius - 1 - 50 - 10, radius * Math.PI, radius * Math.PI)
   ctx.closePath();
   // mouseArray.push([pointerX,pointerY])
-  
+  // let dup = circle.circles
   var rect1 = {x: pointerX, y: pointerY, width: radius, height: radius}  
   for (let x = 0; x < circle.circles.length;x++){
     var rect2 = {x: circle.circles[x][0]+(window.innerWidth-canvas.width)/2, y: circle.circles[x][1]+60, width: radius, height: radius}
@@ -151,6 +166,7 @@ function pointerCheck() {
         // console.log(tempx,rect1.x)
         tempy = rect1.y
       //  console.log("collision detected!")
+      // if ()
        circle.score += 1
       //  console.log(circle.score)
    }
@@ -186,14 +202,6 @@ function pointerCheck() {
 // }
 
 
-
-
-
-
-
-
-
-
 // window.addEventListener('click', (e) => { //mouseover   
 //   xpos = e.clientX
 //   ypos = e.clientY
@@ -222,6 +230,7 @@ function pointerCheck() {
 
 
 function start() {
+  
   let circleCount = Math.floor(Math.random() * (30 - 10) + 10);
   
   for (let x = 0; x < circleCount; x++) {
@@ -345,10 +354,6 @@ function draw() {
     //  
     // }
    
-    
-    
-
-
 
   // }
   
@@ -415,23 +420,30 @@ function realStart(mode2){
   
 // }
 
-
-
-
-
 function myStop() {
   clearInterval(circle.s1);
   clearInterval(circle.s2 );
-  setTimeout(clear, 100);
+  setTimeout(clear, 10);
   circle.score = 0
   // circle.score = 0  
   circle.audio.pause()
   circle.audio.currentTime = 0;
   circle.boolStarted = false
+  setTimeout(writeLastScore, 40);
+
 }
 // 
+function writeLastScore(){
+  ctx.beginPath();
+  ctx.textAlign = 'center';
+  ctx.fillStyle = 'white';
+  ctx.font = '36px roboto';
+  let endScoreOutput = `SCORE : ${endScore}`;  
+  ctx.fillText(endScoreOutput,canvas.width/2,canvas.height/2);
+}
 // 
 function myStart() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height)
   realStart()
   circle.audio.play();
 }
@@ -459,7 +471,9 @@ function hasMusicStopped(){
 
 
   if (circle.audio.ended === true){
+    endScore = circle.score
     myStop()    
+    
   }
 }
 
@@ -492,38 +506,48 @@ function drawInstruction(){
   ctx.font = '36px roboto';
   
   let inst2 = `Please zoom out so you can see the whole rectangle`;
-  let inst = `Use your mouse to erase`;
+  let inst = `Use your mouse to ERASE ME`;
   ctx.fillText(inst,canvas.width/2,canvas.height/2);
   ctx.fillText(inst2,canvas.width/2,canvas.height/2+50);
 }
 
 
 function disclaimer(){
+  circle.score = 0
+  // circle.score = 0  
+  circle.audio.pause()
+  circle.audio.currentTime = 0;
+  circle.boolStarted = false
   ctx.clearRect(0,0,canvas.width,canvas.height)
   // ctx.fillStyle = 'rgba(0,0,0,0.5)';
   // ctx.fillRect(0,0,canvas.width,40);
   ctx.beginPath();
   ctx.textAlign = 'center';
-  ctx.fillStyle = 'white';
+ 
   ctx.font = '34px roboto';
-  
+  ctx.fillStyle = 'sliver';
   let edu = `Disclaimer:`;
   let edu1 = `This project is only for educational purpose only(Non-commercial)`;
   let edu5 = `Shape of You by Ed Sheeran: https://www.youtube.com/watch?v=VJ2rlci9PE0`;
   let edu2 = `Kamado Tanjirou no Uta by Nami: https://www.youtube.com/watch?v=Y7YwcHbvysM`;
   let edu3 = `Rolling Star by Yui: https://www.youtube.com/watch?v=WiowHc4uc0A`;
   let edu4 = `Unravel by TK: https://www.youtube.com/watch?v=H2oWviWV9r4`;
-  let edu6 = `Please zoom out so you can see the whole rectangle`;
-  let edu7 = `Use your mouse to erase`;
-
+  let edu6 = `Rick Roll https://www.youtube.com/watch?v=dQw4w9WgXcQ`;
+  let edu7 = `Please zoom out so you can see the whole rectangle`;
+  let edu8 = `Use your mouse to ERASE ME`;
+  let edu9 = `Choose a difficulty and song at the bottom of the page, then start`;
+  
   ctx.fillText(edu,canvas.width/2,50);
   ctx.fillText(edu1,canvas.width/2,100);
   ctx.fillText(edu2,canvas.width/2,150);
   ctx.fillText(edu3,canvas.width/2,200);
   ctx.fillText(edu4,canvas.width/2,250);
   ctx.fillText(edu5,canvas.width/2,300);
-  ctx.fillText(edu6,canvas.width/2,400);
+  ctx.fillText(edu6,canvas.width/2,350);
   ctx.fillText(edu7,canvas.width/2,450);
+  ctx.fillText(edu8,canvas.width/2,500);
+  // ctx.fillText(edu8,canvas.width/2,550);
+  ctx.fillText(edu9,canvas.width/2,600);
 }
 // draw()
 // realStart()
