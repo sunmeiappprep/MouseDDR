@@ -490,8 +490,10 @@ function drawInstruction(){
   ctx.fillStyle = 'white';
   ctx.font = '36px roboto';
   
-  let tempOutput = `Use your mouse to erase`;
-  ctx.fillText(tempOutput,canvas.width/2,canvas.height/2);
+  let inst2 = `Please zoom out so you can see the whole rectangle`;
+  let inst = `Use your mouse to erase`;
+  ctx.fillText(inst,canvas.width/2,canvas.height/2);
+  ctx.fillText(inst2,canvas.width/2,canvas.height/2+50);
 }
 
 
@@ -505,12 +507,13 @@ function disclaimer(){
   ctx.font = '34px roboto';
   
   let edu = `Disclaimer:`;
-  let edu1 = `This site is only for educational purpose only(Non-commercial)`;
+  let edu1 = `This project is only for educational purpose only(Non-commercial)`;
   let edu5 = `Shape of You by Ed Sheeran: https://www.youtube.com/watch?v=VJ2rlci9PE0`;
   let edu2 = `Kamado Tanjirou no Uta by Nami: https://www.youtube.com/watch?v=Y7YwcHbvysM`;
   let edu3 = `Rolling Star by Yui: https://www.youtube.com/watch?v=WiowHc4uc0A`;
   let edu4 = `Unravel by TK: https://www.youtube.com/watch?v=H2oWviWV9r4`;
-  // let edu6 = `Shape of You by Ed Sheeran: https://www.youtube.com/watch?v=VJ2rlci9PE0`;
+  let edu6 = `Please zoom out so you can see the whole rectangle`;
+  let edu7 = `Use your mouse to erase`;
 
   ctx.fillText(edu,canvas.width/2,50);
   ctx.fillText(edu1,canvas.width/2,100);
@@ -518,7 +521,8 @@ function disclaimer(){
   ctx.fillText(edu3,canvas.width/2,200);
   ctx.fillText(edu4,canvas.width/2,250);
   ctx.fillText(edu5,canvas.width/2,300);
-  ctx.fillText(edu6,canvas.width/2,350);
+  ctx.fillText(edu6,canvas.width/2,400);
+  ctx.fillText(edu7,canvas.width/2,450);
 }
 // draw()
 // realStart()

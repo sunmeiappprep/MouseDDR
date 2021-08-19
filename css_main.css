@@ -21,8 +21,14 @@ body {
     display: flex;
     justify-content: space-between;
     margin: 0 auto;
-    width: 150px;
+    width: 250px;
   }
+  
+  .something1 {
+   display: block;
+    padding: 10px 20px; 
+  }
+
   
   .header-logo {
     display: block;
