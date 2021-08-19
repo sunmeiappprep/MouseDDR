@@ -147,33 +147,43 @@ document.onmousemove = function(event) {
 	pointerY = event.pageY;
 
 }
+let lastLoc = [-1,-1]
 
 setInterval(pointerCheck, 10);
 function pointerCheck() {
-  let tempx = -1;
-  let tempy = -1
-  let radius = 20
+ 
 	// console.log('Cursor at: '+pointerX+', '+pointerY);
   // ctx.clearRect(pointerX-((window.innerWidth-canvas.width)/2)-40, pointerY-40, 80, 80)
-  
+  let radius = 20  
   ctx.beginPath();
   ctx.clearRect(pointerX - radius - 1- ((window.innerWidth-canvas.width)/2), pointerY - radius - 1 - 50 - 10, radius * Math.PI, radius * Math.PI)
   ctx.closePath();
   // mouseArray.push([pointerX,pointerY])
   // let dup = circle.circles
-  var rect1 = {x: pointerX, y: pointerY, width: radius, height: radius}  
+  var rect1 = {x: pointerX, y: pointerY, width: radius, height: radius}  //whole page
+ 
   for (let x = 0; x < circle.circles.length;x++){
     var rect2 = {x: circle.circles[x][0]+(window.innerWidth-canvas.width)/2, y: circle.circles[x][1]+60, width: radius, height: radius}
+    // this is clearing
     if (rect1.x < rect2.x + rect2.width &&
       rect1.x + rect1.width > rect2.x &&
       rect1.y < rect2.y + rect2.height &&
-      rect1.y + rect1.height > rect2.y && (rect1.x != tempx && rect1.y != tempy) ){
-        tempx = rect1.x
-        // console.log(tempx,rect1.x)
-        tempy = rect1.y
+      rect1.y + rect1.height > rect2.y){
+        // console.log(tempx,rect2.y+60)
+        if(lastLoc[0] !== rect1.x && lastLoc[1] !== rect1.y){
+          circle.score += 1
+          lastLoc[0] = rect1.x
+          lastLoc[1] = rect1.y
+        }else{
+          lastLoc[0] = rect1.x
+          lastLoc[1] = rect1.y
+        }
+        // tempx = rect2.x
+        // tempy = rect2.y+60
       //  console.log("collision detected!")
-      // if ()
-       circle.score += 1
+      // if (tempx !== rect1.x){
+        
+      // }
       //  console.log(circle.score)
    }
   }
@@ -444,7 +454,7 @@ function writeLastScore(){
   ctx.textAlign = 'center';
   ctx.fillStyle = 'white';
   ctx.font = '36px roboto';
-  let endScoreOutput = `SCORE : ${endScore}`;  
+  let endScoreOutput = `SCORE : ${endScore*100}`;  
   ctx.fillText(endScoreOutput,canvas.width/2,canvas.height/2);
 }
 // 
