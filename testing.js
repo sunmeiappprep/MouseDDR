@@ -365,7 +365,7 @@ function drawScore (){
   
   let tempOutput = `SCORE : ${circle.score*100}`;
   ctx1.fillText(tempOutput,canvas1.width/2,38);
-  // requestAnimationFrame(drawScore)
+  requestAnimationFrame(drawScore)
 }
 
 // function delayDraw (){
@@ -423,6 +423,7 @@ function myStop() {
   clearInterval(circle.s1);
   clearInterval(circle.s2 );
   setTimeout(clear, 100);
+  circle.score = 0
   // circle.score = 0  
   circle.audio.pause()
   circle.audio.currentTime = 0;
