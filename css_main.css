@@ -14,7 +14,7 @@ body {
   
   .header a {
     display: block;
-    padding: 10px 20px;   
+    padding: 8px 20px;   
   }
   
   .header-nav {
@@ -29,14 +29,7 @@ body {
     padding: 10px 20px; 
   }
 
-  
-  .header-logo {
-    display: block;
-    padding: 20px 20px;
-    font-size: 20;
-    font-style: bold;
-    color: white;
-  }
+
 
   
   .header-list {
@@ -82,7 +75,7 @@ canvas {
 
   border: none;
   color: white;
-  padding: 10px 32px;
+  padding: 10px 20px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -90,6 +83,7 @@ canvas {
   font-family: Verdana;
   margin: 4px 2px;
   cursor: pointer;
+  border-radius: 55px
 }
 
 .something:hover {

@@ -28,7 +28,8 @@ let speed = {
   bpm:113
 }
 
-let mode = "med"
+let mode = undefined
+let currentSong = false
 
 let songBPM = 1000/(speed.bpm/60)
 
@@ -72,6 +73,7 @@ function rollingStar() {
     med:songBPM*2,
     hard:songBPM*1
   }
+  currentSong = true
 
   
 }
@@ -87,6 +89,7 @@ function neverGonnaGiveYouUp() {
     med:songBPM*2,
     hard:songBPM*1
   }
+  currentSong = true
 
   
 }
@@ -101,6 +104,7 @@ function kamadoTanjironoUta() {
     med:songBPM*2,
     hard:songBPM*1
   }  
+  currentSong = true
  
 }
 
@@ -114,6 +118,7 @@ function shapeOfYou() {
     med:songBPM*2,
     hard:songBPM*1
   }  
+  currentSong = true
  
 }
 
@@ -131,6 +136,7 @@ function unravel() {
   }
  
 
+  currentSong = true
 
 }
 let mouseArray = []
@@ -237,28 +243,28 @@ function start() {
     let y = Math.random()
     if (x === circleCount / 4 && circle.direction !== undefined) {
       // console.log(circle.direction[0])  
-      circle.direction[0] = circle.direction[0] * -1 || 30
+      circle.direction[0] = circle.direction[0] * -1 
       // console.log(circle.direction[0])
       // console.log(circle.direction[1])
-      circle.direction[1] = circle.direction[0] * -1 || 30
+      circle.direction[1] = circle.direction[0] * -1 
       // console.log(circle.direction[1])
 
     }
     else if(x === circleCount / 2 && circle.direction !== undefined) {
       // console.log(circle.direction[0])  
-      circle.direction[0] = circle.direction[1] * -1 || 30
+      circle.direction[0] = circle.direction[1] * -1 
       // console.log(circle.direction[0])
       // console.log(circle.direction[1])
-      circle.direction[1] = circle.direction[1] * -1 || 30
+      circle.direction[1] = circle.direction[1] * -1
       // console.log(circle.direction[1])
 
     }
     else if (x === (circleCount * .75) && y < .33) {
       // console.log(circle.direction[0])  
-      circle.direction[0] = circle.direction[1] * -1 || 30
+      circle.direction[0] = circle.direction[1] * -1 
       // console.log(circle.direction[0])
       // console.log(circle.direction[1])
-      circle.direction[1] = circle.direction[1] * 1 || 30
+      circle.direction[1] = circle.direction[1] * 1 
       // console.log(circle.direction[1])
 
     }
@@ -443,6 +449,9 @@ function writeLastScore(){
 }
 // 
 function myStart() {
+  if (mode === undefined || currentSong === false){
+    return alert("Please Select a Song and Diff");
+  }
   ctx.clearRect(0, 0, canvas.width, canvas.height)
   realStart()
   circle.audio.play();
