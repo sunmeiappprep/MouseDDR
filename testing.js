@@ -497,6 +497,7 @@ function hard() {
 }
 
 function drawInstruction(){
+
   ctx.clearRect(0,0,canvas.width,canvas.height)
   // ctx.fillStyle = 'rgba(0,0,0,0.5)';
   // ctx.fillRect(0,0,canvas.width,40);
@@ -513,6 +514,8 @@ function drawInstruction(){
 
 
 function disclaimer(){
+  clearInterval(circle.s1);
+  clearInterval(circle.s2);
   circle.score = 0
   // circle.score = 0  
   circle.audio.pause()
