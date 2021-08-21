@@ -22,13 +22,13 @@ canvas.style.cursor = 'pointer';
 // canvas.style.backgroundColor = 'sliver';
 // div.append(canvas1);
 document.body.prepend(canvas1);
-
+let oldVol = undefined
 
 let speed = {
   bpm:113
 }
 
-let mode = undefined
+let mode = "No Diff"
 let currentSong = false
 
 let songBPM = 1000/(speed.bpm/60)
@@ -54,9 +54,7 @@ const circle = {
   score: 0,
   s1: undefined,
   s2: undefined,
-  // diff: diff.med,
-  // audio:new Audio('92.mp3'),
-  // audio:new Audio('Temp79.mp3'),
+
   unravelSong:new Audio('Unravel.mp3'),
   // audio:new Audio('120 2.mp3'),
   audio:new Audio('113.mp3'),
@@ -64,9 +62,15 @@ const circle = {
   // audio:new Audio('Naruto 97.mp3'),
   boolStarted: false
 };
+
+let currentTrack = "No track"
+
 function rollingStar() {
-  myStop()
+  currentTrack = "rollingStar"
+  myStop3("rollingStar")
   circle.audio = new Audio('81.mp3')
+  // oldVol = circle.audio.volume
+    
   speed.bpm = 81*2
   songBPM = 1000/(speed.bpm/60)
   diff = {
@@ -76,13 +80,15 @@ function rollingStar() {
     hard:songBPM*1
   }
   currentSong = true
-
+  // oldVol = circle.audio.volume
+  // circle.audio.volume = oldVol
   
 }
 
 
 function neverGonnaGiveYouUp() {
-  myStop()
+  currentTrack = "neverGonnaGiveYouUp"
+  myStop3("neverGonnaGiveYouUp")
   circle.audio = new Audio('113.mp3')
   speed.bpm = 113
   songBPM = 1000/(speed.bpm/60)
@@ -93,12 +99,14 @@ function neverGonnaGiveYouUp() {
     hard:songBPM*1
   }
   currentSong = true
-
+  // oldVol = .60 || circle.audio.volume
+  // circle.audio.volume = oldVol
   
 }
 
 function kamadoTanjironoUta() {
-  myStop()
+  currentTrack = "kamadoTanjironoUta"
+  myStop3("kamadoTanjironoUta")
   circle.audio = new Audio('76.mp3')
   speed.bpm = 76
   songBPM = 1000/(speed.bpm/60)
@@ -109,11 +117,14 @@ function kamadoTanjironoUta() {
     hard:songBPM*1
   }  
   currentSong = true
- 
+  // oldVol = .60 || circle.audio.volume
+  // circle.audio.volume = oldVol
 }
 
 function shapeOfYou() {
-  myStop()
+  currentTrack = "shapeOfYou"
+
+  myStop3("shapeOfYou")
   circle.audio = new Audio('ed.mp3')
   speed.bpm = 96
   songBPM = 1000/(speed.bpm/60)
@@ -124,13 +135,16 @@ function shapeOfYou() {
     hard:songBPM*1
   }  
   currentSong = true
- 
+  // oldVol = .60 || circle.audio.volume
+  // circle.audio.volume = oldVol
 }
 
 
 function unravel() {
   // debugger
-  myStop()
+  currentTrack = "unravel"
+
+  myStop3("unravel")
   circle.audio = new Audio('Unravel.mp3')
   speed.bpm = 135
   songBPM = 1000/(speed.bpm/60)
@@ -140,7 +154,8 @@ function unravel() {
     med:songBPM*2,
     hard:songBPM*1
   }
- 
+  // oldVol = .60 || circle.audio.volume
+  // circle.audio.volume = oldVol
 
   currentSong = true
 
@@ -160,10 +175,13 @@ function pointerCheck() {
  
 	// console.log('Cursor at: '+pointerX+', '+pointerY);
   // ctx.clearRect(pointerX-((window.innerWidth-canvas.width)/2)-40, pointerY-40, 80, 80)
-  let radius = 20  
-  ctx.beginPath();
-  ctx.clearRect(pointerX - radius - 1- ((window.innerWidth-canvas.width)/2), pointerY - radius - 1 - 50 - 10, radius * Math.PI, radius * Math.PI)
-  ctx.closePath();
+  let radius = 20 
+  if (circle.audio.currentTime > 0){
+    ctx.beginPath();
+    ctx.clearRect(pointerX - radius - 1- ((window.innerWidth-canvas.width)/2), pointerY - radius - 1 - 50 - 10, radius * Math.PI, radius * Math.PI)
+    ctx.closePath();
+  }
+
   // mouseArray.push([pointerX,pointerY])
   // let dup = circle.circles
   var rect1 = {x: pointerX, y: pointerY, width: radius, height: radius}  //whole page
@@ -184,71 +202,12 @@ function pointerCheck() {
           lastLoc[0] = rect1.x
           lastLoc[1] = rect1.y
         }
-        // tempx = rect2.x
-        // tempy = rect2.y+60
-      //  console.log("collision detected!")
-      // if (tempx !== rect1.x){
-        
-      // }
-      //  console.log(circle.score)
+  
    }
   }
-  // console.log(rect1)
-  // console.log(rect2)
-  // if (rect1.x < rect2.x + rect2.width &&
-  //    rect1.x + rect1.width > rect2.x &&
-  //    rect1.y < rect2.y + rect2.height &&
-  //    rect1.y + rect1.height > rect2.y) {
-  //     console.log("collision detected!")
-  //     score += 1
-  //     console.log(score)
-  // }
-  
-  // filling in the values =>
-  
-  // if (5 < 30 &&
-  //     55 > 20 &&
-  //     5 < 20 &&
-  //     55 > 10) {
-  //     // collision detected!
-  // }
 
 }
 
-// function check(){
-//   while (circle.circles.length !== 0){
-//     for (let x = 0; circle.circles.length;x++){
-//       // console.log(circle.circles[x])
-//     }
-//   }
-// }
-
-
-// window.addEventListener('click', (e) => { //mouseover   
-//   xpos = e.clientX
-//   ypos = e.clientY
-//   console.log(xpos,ypos)
-// })
-
-
-// canvas.addEventListener('click', (e) => { //mouseover 
-//   const rect = canvas.getBoundingClientRect();
-//   xpos = e.clientX - rect.left
-//   ypos = e.clientY - rect.top
-//   // console.log(e)
-
-//   ctx.clearRect(xpos-10, ypos-10, 50, 40)
-
-//   console.log(xpos,ypos)
- 
-//   const mouseOver = {
-//     x: xpos,
-//     y: ypos,
-//     size: 50,
-//   }
-//   // console.log(xpos,ypos)
-//   mouseArray.push(mouseOver)
-// })
 
 
 function start() {
@@ -286,11 +245,7 @@ function start() {
     }
     
 
-    // if (x === 1){
-    //   continue
-    // }
-    // if (stop === false) {
-      // debugger
+
       createcircle()
       // setTimeout(createcircle, 500);
       draw()
@@ -311,9 +266,7 @@ function start() {
   
  
   }
-  // circle.randomPoint = undefined
-  // circle.direction = [Math.random() * (max - min) + min, Math.random() * (max - min) + min]
-  // 
+
 }
 
 
@@ -383,7 +336,7 @@ function draw() {
 
 function drawScore (){
   ctx1.clearRect(0,0,canvas1.width,40)
-  ctx1.fillStyle = 'rgba(0,0,0,0.5)';
+  ctx1.fillStyle = 'rgba(0,0,0,0)';
   ctx1.fillRect(0,0,canvas1.width,40);
   ctx1.beginPath();
   ctx1.textAlign = 'center';
@@ -395,27 +348,7 @@ function drawScore (){
   requestAnimationFrame(drawScore)
 }
 
-// function delayDraw (){
-//   setTimeout(draw, 1000);
-// }
 
-// function createcircle() {
-  
-// }
-
-// function realStart(){
-//   let x = 0;
-//   while (x < 5){
-//     start()
-//     setTimeout(clear,1000)
-//     x++
-//   }
-// } 
-// var start1 = setInterval(start, 500);
-// var start2 = setInterval(clear, 2000);
-
-
-//size????????????????
 
 
 function realStart(mode2){ 
@@ -430,6 +363,7 @@ function realStart(mode2){
     // var  = setInterval(start, 500);
     circle.s1 = start1
     circle.s2 = start2
+    circle.score = 0
     // start1()
     // start2() 
     
@@ -446,7 +380,7 @@ function myStop() {
   clearInterval(circle.s1);
   clearInterval(circle.s2 );
   setTimeout(clear, 10);
-  circle.score = 0
+  // circle.score = 0
   // circle.score = 0  
   circle.audio.pause()
   circle.audio.currentTime = 0;
@@ -454,14 +388,66 @@ function myStop() {
   setTimeout(writeLastScore, 40);
 
 }
-// 
-function writeLastScore(){
+
+function myStop2() {
+  clear2()
+  clearInterval(circle.s1);
+  clearInterval(circle.s2 );
+  // setTimeout(clear, 5);
+  // circle.score = 0
+  // circle.score = 0  
+  circle.audio.pause()
+  circle.audio.currentTime = 0;
+  circle.boolStarted = false
+  // setTimeout(writeLastScore(item), 400);
+  chosed()
+
+}
+
+function myStop3(item) {
+  clear2()
+  clearInterval(circle.s1);
+  clearInterval(circle.s2 );
+  // setTimeout(clear, 5);
+  // circle.score = 0
+  // circle.score = 0  
+  circle.audio.pause()
+  circle.audio.currentTime = 0;
+  circle.boolStarted = false
+  // setTimeout(writeLastScore(item), 400);
+  setTimeout(chosed2, 100);
+
+}
+function chosed(){
   ctx.beginPath();
   ctx.textAlign = 'center';
   ctx.fillStyle = 'white';
   ctx.font = '36px roboto';
-  let endScoreOutput = `SCORE : ${endScore*100}`;  
+  let endScoreOutput = `${mode} is selected`;  
+  let endScoreOutput2 = `${currentTrack} is selected`;  
+  ctx.fillText(endScoreOutput,canvas.width/2,canvas.height/2+50);
+  ctx.fillText(endScoreOutput2,canvas.width/2,canvas.height/2+100);
+}
+
+function chosed2(){
+  ctx.beginPath();
+  ctx.textAlign = 'center';
+  ctx.fillStyle = 'white';
+  ctx.font = '36px roboto';
+  let endScoreOutput = `${mode} is selected`;  
+  let endScoreOutput2 = `${currentTrack} is selected`;  
+  ctx.fillText(endScoreOutput,canvas.width/2,canvas.height/2+50);
+  ctx.fillText(endScoreOutput2,canvas.width/2,canvas.height/2+100);
+}
+// 
+function writeLastScore(item){
+  ctx.beginPath();
+  ctx.textAlign = 'center';
+  ctx.fillStyle = 'white';
+  ctx.font = '36px roboto';
+  let endScoreOutput = `SCORE : ${circle.score*100}`;  
   ctx.fillText(endScoreOutput,canvas.width/2,canvas.height/2);
+  // chosed(item);
 }
 // 
 function myStart() {
@@ -473,14 +459,7 @@ function myStart() {
   circle.audio.play();
 }
 
-// start()
-// setTimeout(clear,1000)
-// start()
-// setTimeout(clear,1000)
-// start()
-// setTimeout(clear,1000)
-// start()
-// setTimeout(clear,1000)
+
 function clear(){
   ctx.clearRect(0, 0, canvas.width, canvas.height)
   // ctx.clearRect(canvas.width/2, 0, 50, canvas.height)
@@ -490,6 +469,11 @@ function clear(){
   hasMusicStopped() 
 }
 
+function clear2(){
+  ctx.clearRect(0, 0, canvas.width, canvas.height)
+  // ctx.clearRect(canvas.width/2, 0, 50, canvas.height)
+}
+
 function hasMusicStopped(){
   // ctx1.clearRect(0, 0, canvas.width, canvas.height)
     // ctx.clearRect(canvas.width/2, 0, 50, canvas.height)
@@ -497,36 +481,40 @@ function hasMusicStopped(){
 
   if (circle.audio.ended === true){
     endScore = circle.score
-    myStop()    
+    clear2
+    myStop2()    
     
   }
 }
 
 function easy() {
-  myStop()
+  mode = "easy"
+  myStop2("Easy")
   mode = "easy"
   
 
 }
 function med() {
-  myStop()
   mode = "med"
- 
+  myStop2()
+  mode = "med"
 
 }
 function hard() {
-  myStop()
+  mode = "hard"
+  myStop2("Hard")
   mode = "hard"
   
 
 }
 function trackPadUsers() {
-  myStop()
+  mode = "trackpad"
+  myStop2("Trackpad")
   mode = "trackpad"
   
 
 }
-let oldVol = undefined
+
 
 function toggleMute() {
   if (circle.audio.volume > 0){
@@ -541,7 +529,11 @@ function toggleMute() {
 
 function volDown() {
   if (circle.audio.volume > .001){
-    circle.audio.volume -= .20
+    if (circle.audio.volume <.20)
+        circle.audio.volume = 0
+    else{
+      circle.audio.volume -= .20
+    }
 }
 }
 
@@ -563,7 +555,7 @@ function drawInstruction(){
   ctx.font = '36px roboto';
   
   let inst2 = `Please zoom out so you can see the whole rectangle`;
-  let inst = `Use your mouse to ERASE ME`;
+  let inst = `Use your mouse to erase the circles appearing the screen`;
   ctx.fillText(inst,canvas.width/2,canvas.height/2);
   ctx.fillText(inst2,canvas.width/2,canvas.height/2+50);
 }
@@ -608,10 +600,7 @@ function disclaimer(){
   // ctx.fillText(edu8,canvas.width/2,550);
   ctx.fillText(edu9,canvas.width/2,600);
 }
-// draw()
-// realStart()
-// delayDraw()
-// console.log(circle.circles)
+
 drawScore ()
 drawInstruction()
-// hasMusicStopped()
+circle.audio.volume = .60
