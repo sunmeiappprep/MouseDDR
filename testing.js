@@ -70,7 +70,7 @@ function rollingStar() {
   myStop3("rollingStar")
   circle.audio = new Audio('81.mp3')
   // oldVol = circle.audio.volume
-    
+
   speed.bpm = 81*2
   songBPM = 1000/(speed.bpm/60)
   diff = {
@@ -451,7 +451,7 @@ function writeLastScore(item){
 }
 // 
 function myStart() {
-  if (mode === undefined || currentSong === false){
+  if (mode === "No Diff" || currentSong === false){
     return alert("Please Select a Song and Diff");
   }
   ctx.clearRect(0, 0, canvas.width, canvas.height)
