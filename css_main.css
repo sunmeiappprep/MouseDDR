@@ -13,19 +13,27 @@ body {
 
   
   .header a {
-    display: block;
+    /* display: block; */
     padding: 8px 20px;   
+  }
+
+  .header{
+    display: flex;
+    justify-content: center;
+    /* transform: translate(-50%,-50%); */
+    /* margin-right: -50%; */
+    margin-right: 5%;
   }
   
   .header-nav {
     display: flex;
-    justify-content: space-between;
-    margin: 0 auto;
+    /* justify-content: center; */
+    /* margin: 0 auto; */
     width: 250px;
   }
   
   .something1 {
-   display: block;
+   /* display: block; */
     padding: 10px 20px; 
   }
 
@@ -34,6 +42,7 @@ body {
   
   .header-list {
     display: flex;
+    justify-content: space-between;
   }
   
   .header-list > li {
@@ -98,6 +107,11 @@ body {
   margin: 4px 2px;
   cursor: pointer;
   border-radius: 55px
+}
+
+.class{
+  background-color: white;
+  color: white;
 }
 
 .something:hover {

@@ -66,6 +66,8 @@ const circle = {
 let currentTrack = "No track"
 
 function rollingStar() {
+  changeMenu("song")
+  changeColor("rolling")
   currentTrack = "rollingStar"
   myStop3("rollingStar")
   circle.audio = new Audio('81.mp3')
@@ -87,6 +89,8 @@ function rollingStar() {
 
 
 function neverGonnaGiveYouUp() {
+  changeMenu("song")
+  changeColor("never")
   currentTrack = "neverGonnaGiveYouUp"
   myStop3("neverGonnaGiveYouUp")
   circle.audio = new Audio('113.mp3')
@@ -105,6 +109,8 @@ function neverGonnaGiveYouUp() {
 }
 
 function kamadoTanjironoUta() {
+  changeMenu("song")
+  changeColor("kamado")
   currentTrack = "kamadoTanjironoUta"
   myStop3("kamadoTanjironoUta")
   circle.audio = new Audio('76.mp3')
@@ -122,6 +128,8 @@ function kamadoTanjironoUta() {
 }
 
 function shapeOfYou() {
+  changeMenu("song")
+  changeColor("shape")
   currentTrack = "shapeOfYou"
 
   myStop3("shapeOfYou")
@@ -142,6 +150,8 @@ function shapeOfYou() {
 
 function unravel() {
   // debugger
+  changeMenu("song")
+  changeColor("unravel")
   currentTrack = "unravel"
 
   myStop3("unravel")
@@ -170,7 +180,7 @@ document.onmousemove = function(event) {
 }
 let lastLoc = [-1,-1]
 
-setInterval(pointerCheck, 10);
+setInterval(pointerCheck, 1 );
 function pointerCheck() {
  
 	// console.log('Cursor at: '+pointerX+', '+pointerY);
@@ -377,6 +387,8 @@ function realStart(mode2){
 // }
 
 function myStop() {
+  changeMenu("play")
+  changeColor("stop")
   clearInterval(circle.s1);
   clearInterval(circle.s2 );
   setTimeout(clear, 10);
@@ -451,7 +463,10 @@ function writeLastScore(item){
 }
 // 
 function myStart() {
+  changeMenu("play")
+  changeColor("start")
   if (mode === "No Diff" || currentSong === false){
+    changeMenu("play")
     return alert("Please Select a Song and Diff");
   }
   ctx.clearRect(0, 0, canvas.width, canvas.height)
@@ -491,6 +506,11 @@ function easy() {
   mode = "easy"
   myStop2("Easy")
   mode = "easy"
+  changeMenu("diff")
+
+  changeColor("easy")
+
+
   
 
 }
@@ -498,25 +518,55 @@ function med() {
   mode = "med"
   myStop2()
   mode = "med"
+  changeMenu("diff")
+  changeColor("medium")
+
 
 }
 function hard() {
   mode = "hard"
   myStop2("Hard")
   mode = "hard"
-  
+  changeMenu("diff")
+  changeColor("hard")
 
 }
 function trackPadUsers() {
   mode = "trackpad"
   myStop2("Trackpad")
   mode = "trackpad"
-  
+  changeMenu("diff")
+  changeColor("track")
 
+
+}
+
+function changeMenu(menu) {
+  console.log(menu)
+  let z = document.querySelectorAll(`.${menu}`);
+  console.log(z.length)
+  for (let x = 0; x < z.length;x++){
+    z[x].style.color = 'white'
+  }
+}
+
+
+function changeColor(button) {
+  let p = document.querySelector(`.${button}`);
+  p.style.color = 'red';
 }
 
 
 function toggleMute() {
+  if (circle.audio.volume === 0){
+    changeMenu("mute")
+
+  }
+  else{
+    changeColor("mute")
+
+  }
+
   if (circle.audio.volume > 0){
     oldVol = circle.audio.volume
     circle.audio.volume = 0
@@ -556,8 +606,14 @@ function drawInstruction(){
   
   let inst2 = `Please zoom out so you can see the whole rectangle`;
   let inst = `Use your mouse to erase the circles appearing the screen`;
+  let inst3 = `Spamming the mouse may not result in maximum points`;
+  let inst4 = `Please select a song and diff then start the game`;
+
+  ctx.fillText(inst4,canvas.width/2,canvas.height/2-50);  
   ctx.fillText(inst,canvas.width/2,canvas.height/2);
   ctx.fillText(inst2,canvas.width/2,canvas.height/2+50);
+  ctx.fillText(inst3,canvas.width/2,canvas.height/2+100);
+
 }
 
 
@@ -604,3 +660,4 @@ function disclaimer(){
 drawScore ()
 drawInstruction()
 circle.audio.volume = .60
+// changeColor()
