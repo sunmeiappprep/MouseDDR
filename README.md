@@ -1,4 +1,4 @@
-# [MouseDDR](https://waterbnb.herokuapp.com/#/)
+# [MouseDDR](https://sunmeiappprep.github.io/MouseDDR/)
 
 # Overview
 MouseDDR is game idea based on the game Osu. The point of the game should be to track the random circles that will be appearing at timing interval. The speed of how fast the circle appear and disappear will be graded on a scale of non gamer to gamer like reaction. 
