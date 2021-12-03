@@ -1,8 +1,7 @@
 # [MouseDDR](https://sunmeiappprep.github.io/MouseDDR/)
 
-# Overview
-MouseDDR is game idea based on the game Osu. The point of the game should be to track the random circles that will be appearing at timing interval. The speed of how fast the circle appear and disappear will be graded on a scale of non gamer to gamer like reaction. 
-
+# About
+- MouseDDR is game idea based on the game Osu. The point of the game should be to track the random circles that will be appearing at timing interval. The speed of how fast the circle appear and disappear will be graded on a scale of non gamer to gamer like reaction. 
 - Circle appears on the canvas, you sound use your mouse to track the pattern as it continues to generate new circle while the old one disappear. So you should be fast
 - Get as much combo as you can.
 - Chaining combo is the easiest way to get points, combo is created by sucessfully hovering on the circles as they appear
