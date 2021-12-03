@@ -14,8 +14,7 @@ MouseDDR is game idea based on the game Osu. The point of the game should be to 
 - Select difficulty
 - Select Songs
 - The game will match the song BPM and render circle according to difficulty
-- Volume control is included with toggle mute , vol up , vol down
--
+- Volume control is included with toggle mute , volume up , volume down
 
 
 # Disclaimer
